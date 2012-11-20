@@ -1,0 +1,17 @@
+defaults: &defaults
+  adapter: postgresql
+  template: template0
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *defaults
+  database: my_blog_development
+
+staging:
+  <<: *defaults
+  database: my_blog_staging
+
+production:
+  <<: *defaults
+  database: my_blog_production

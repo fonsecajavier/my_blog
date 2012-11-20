@@ -1,0 +1,17 @@
+<h1><%= @post.title%></h1>
+<p><%= @post.content%></p>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <p><%= comment.nickname %> said <%= time_ago_in_words(comment.created_at) %> ago:</p>
+      <p><%= comment.message %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= simple_form_for [@post, @post.comments.build] do |f| %>
+  <%= f.input :nickname %>
+  <%= f.input :message, :input_html => {:rows => 5}  %>
+  <%= f.button :submit %>
+<% end %>
