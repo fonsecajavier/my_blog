@@ -1,0 +1,6 @@
+<%= simple_form_for [@post, @comment] do |f| %>
+  <h3>Insert a comment here:</h3>
+  <%= f.input :nickname %>
+  <%= f.input :message, :input_html => {:rows => 5}  %>
+  <%= f.button :submit %>
+<% end %>

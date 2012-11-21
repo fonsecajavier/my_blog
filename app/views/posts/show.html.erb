@@ -10,8 +10,5 @@
   <% end %>
 </ul>
 
-<%= simple_form_for [@post, @post.comments.build] do |f| %>
-  <%= f.input :nickname %>
-  <%= f.input :message, :input_html => {:rows => 5}  %>
-  <%= f.button :submit %>
-<% end %>
+
+<%= render "comments/form" %>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.order("created_at DESC")
@@ -8,6 +8,23 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_id(params[:id])
     @comments = @post.comments.order("created_at DESC")
+
+    @comment = @post.comments.build
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update_attributes(params[:post])
+      redirect_to posts_path, :notice => "Your post was edited succesfully"
+    else
+      flash[:error] = "There were some errors editing your post"
+      render action: "edit"
+    end    
   end
 
   def new
