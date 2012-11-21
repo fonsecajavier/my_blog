@@ -1,5 +1,8 @@
 <h1>All the posts!</h1>
 <ul>
+  <% if @posts.empty? %>
+  <p>No one has written a blog post so far.</p>
+  <% end %>
   <% @posts.each do |post| %>
     <li>
       <%= link_to(post.title, post) %> -
@@ -8,3 +11,7 @@
     </li>
   <% end %>
 </ul>
+
+<% if user_signed_in? %>
+<%= link_to "New post", new_post_path %>
+<% end %>
