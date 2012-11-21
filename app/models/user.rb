@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :posts
+  has_many :posts, :dependent => :destroy
 
   validates_presence_of :full_name
 
