@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :load_facebook_client_side_config, :only => [:show]
 
   def index
     @posts = Post.order("created_at DESC")
