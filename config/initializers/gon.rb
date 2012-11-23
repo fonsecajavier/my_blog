@@ -1,0 +1,1 @@
+Gon.global.global_facebook_config = {:app_id => "global_config_test"} # just a quick test for the gon gem
