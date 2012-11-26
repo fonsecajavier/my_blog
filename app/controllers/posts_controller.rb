@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update_attributes(params[:post])
-      redirect_to posts_path, :notice => "Your post was edited succesfully"
+      redirect_to post_path(@post), :notice => "Your post was edited succesfully"
     else
       flash[:error] = "There were some errors editing your post"
       render action: "edit"
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      redirect_to posts_path, :notice => "Your post was created succesfully"
+      redirect_to post_path(@post), :notice => "Your post was created succesfully"
     else
       flash[:error] = "There were some errors creating your post"
       render action: "new"

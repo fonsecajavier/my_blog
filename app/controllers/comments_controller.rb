@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@post), :notice => "Your comment was submitted.  Thank you"
     else
-      redirect_to post_path(@post), :error => "Your comment couldn't be submitted"
+      redirect_to post_path(@post), :alert => "Your comment couldn't be submitted"
     end
   end
 end
