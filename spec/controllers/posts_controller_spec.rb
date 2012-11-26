@@ -13,12 +13,15 @@ describe PostsController do
       response.should render_template(:index)
     end
 
-    it "should be presented with a requested post and its comments in the show action" do
+    it "should be presented with a requested post and its comments (from oldest to newest) in the show action" do
       existing_post = create(:post)
       4.times { create(:comment, post_id: existing_post.id) }
       get :show, id: existing_post.id
       assigns[:post].should == existing_post
       assigns[:comments].count.should eql(4)
+      assigns[:comments].map(&:id).should eql(
+        assigns[:comments].sort { |x, y| x[:id] <=> y[:id] }.map(&:id)
+      )
       response.should render_template(:show)
     end
 
