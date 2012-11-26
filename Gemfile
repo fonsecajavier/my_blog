@@ -26,6 +26,17 @@ gem 'jquery-rails'
 gem 'pg', '0.14.1'
 gem 'gon', '4.0.1'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  # gem 'database_cleaner'   # might need it in the future (https://github.com/bmabey/database_cleaner)
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

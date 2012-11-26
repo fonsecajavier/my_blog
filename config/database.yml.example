@@ -15,3 +15,7 @@ staging:
 production:
   <<: *defaults
   database: my_blog_production
+
+test:
+  <<: *defaults
+  database: my_blog_test
